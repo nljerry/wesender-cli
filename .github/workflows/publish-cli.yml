@@ -29,15 +29,15 @@ jobs:
           scope: "@nljerry"
 
       - name: Installeer dependencies
-        run: cd apps/cli && bun install
+        run: bun install
 
       - name: Build CLI
-        run: cd apps/cli && bun run build
+        run: bun run build
 
       - name: Draai tests
-        run: cd apps/cli && bun test
+        run: bun test
 
       - name: Publiceer naar GitHub Packages
-        run: cd apps/cli && npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
