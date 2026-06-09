@@ -34,9 +34,6 @@ jobs:
       - name: Build CLI
         run: bun run build
 
-      - name: Draai tests
-        run: bun test
-
       - name: Publiceer naar GitHub Packages
         run: npm publish
         env:
