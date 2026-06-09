@@ -1,0 +1,43 @@
+name: Publiceer CLI naar GitHub Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Build en publiceer @nljerry/wesender-cli
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js voor npm publish
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@nljerry"
+
+      - name: Installeer dependencies
+        run: cd apps/cli && bun install
+
+      - name: Build CLI
+        run: cd apps/cli && bun run build
+
+      - name: Draai tests
+        run: cd apps/cli && bun test
+
+      - name: Publiceer naar GitHub Packages
+        run: cd apps/cli && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
