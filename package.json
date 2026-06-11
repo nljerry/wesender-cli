@@ -1,5 +1,5 @@
 {
-  "name": "@nljerry/wesender-cli",
+  "name": "@wesender/wesender-cli",
   "version": "0.1.0",
   "description": "WeSender CLI: e-mails versturen vanuit de terminal",
   "type": "module",
@@ -28,9 +28,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nljerry/wesender-cli.git"
+    "url": "https://github.com/wesender/wesender-cli.git"
   },
   "homepage": "https://wesender.nl/functies/cli",
-  "bugs": "https://github.com/nljerry/wesender/issues",
+  "bugs": "https://github.com/wesender/wesender/issues",
   "engines": { "node": ">=18" }
 }
